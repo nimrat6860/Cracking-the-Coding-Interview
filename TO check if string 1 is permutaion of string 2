@@ -1,0 +1,46 @@
+##EXPLANATION##
+In this code we will count of characters for each and store it an array.
+To store characters of string 1, we will itrate though each character and update the array at that index by 1.
+In the same way we will proceed for string 2.
+At last we will compare the indexes of both arrays if they are not equal we will return false 
+
+CODE:
+import java.util.*;
+public class permutation
+{
+    boolean permutat(String str1,String str2)
+    {
+        str1=str1.toLowerCase();
+        str2=str2.toLowerCase();
+        if(str1.length()!=str2.length())
+            return false;
+       int[]a=new int[256];
+        Arrays.fill(a,0);
+       int[]b=new int[256];
+       Arrays.fill(b,0);
+       for(int i=0;i<str1.length();i++)
+       {
+           char ch=str1.charAt(i);
+           char ch1=str2.charAt(i);
+           a[ch]++;
+           b[ch1]++;
+       }
+       for(int i=0;i<=256;i++)
+       {
+           if(a[i]!=b[i])
+               return false;
+       }
+       return true;
+    }
+    public static void main(String args[])
+    {
+        permutation ob=new permutation();
+        Scanner sc=new Scanner(System.in);
+        System.out.print("enter string 1");
+        String str1=sc.nextLine();
+        System.out.print("enter string 2");
+        String str2=sc.nextLine();
+        boolean ans=ob.permutat(str1,str2);
+      System.out.print(ans);
+    }
+}
