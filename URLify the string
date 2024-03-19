@@ -1,0 +1,36 @@
+TO URLify the string(To replace all spaces with %20)
+CODE:
+import java.util.Scanner;
+public class urlify
+{
+    String s="";
+    String replace(String str)
+    {
+        str=str.trim();
+        for(int i=0;i<str.length();i++)
+        {
+            if(str.charAt(i)!=' ')
+            {
+                s=s+str.charAt(i);
+            }
+            else {
+                s=s+"%20";
+            }
+        }
+        return s;
+    }
+    public static void main(String args[])
+    {
+     urlify ob=new urlify();
+     Scanner sc=new Scanner(System.in);
+     System.out.print("enter a string");
+     String str=sc.nextLine();
+     String ans=ob.replace(str);
+     System.out.print(ans);
+    }
+}
+EXPLANTION:
+It is a very solution
+Firstly trim the string,that is delete the leading nad trailing spaces
+Then form the new string in which we will add the character if it is not space.
+If the character is space then we will add %20 instead of space.
