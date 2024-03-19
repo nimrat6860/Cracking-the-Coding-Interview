@@ -1,0 +1,43 @@
+EXPLANATION:
+HERE,IT IS SEEN THAT A STRING IS PALINDROME IF IT IS OF EVEN LENGTH AND CONTAINS EVEN COUNT OF CHARACTERS..
+AND IF IT IS OF ODD LENGTH IT MUST CONSIST OF ONLY ONE ODD COUNT OF CHARACTER...
+THEREFORE WE WILL STORE THE COUNT OF CHARACTERS IN HASHMAP WITH THEIR RESPECTIVE CHARACTER 
+AND THEN WILL CHECK THE COUNT IF IT IS ODD THEN IT MUST BE ONLY ONCE...IF IT REPEATS FUNCTION SHOULD RETURN NO.....
+
+CODE:
+import java.util.*;
+public class pp
+{
+    boolean check(String str)
+    {
+        boolean flag=false;
+        HashMap<Character,Integer> map=new HashMap<>();
+        for(int i=0;i<str.length();i++)
+        {
+            char ch=str.charAt(i);
+            if(ch!=' ')
+            map.put(ch,map.getOrDefault(ch,0)+1);
+        }
+        for(Map.Entry<Character,Integer> m:map.entrySet())
+        {
+           int c=m.getValue();
+           if(c%2!=0)
+           {
+               if(flag) 
+                   return false;
+               flag=true;
+           }
+        }
+        return true;
+    }
+    public static void main(String args[])
+    {
+        pp ob=new pp();
+        Scanner sc=new Scanner(System.in);
+        System.out.print("enter input");
+        String str=sc.nextLine();
+        boolean ans=ob.check(str);
+        System.out.print(ans);
+
+    }
+}
