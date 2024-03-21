@@ -1,0 +1,13 @@
+EXPLANATION:
+HERE WE HAVE SIMPLY USE CONTAINS FUNCTION.
+WE WILL CHECCK IF GOAL LENGTH IS EQUAL TO STR LENGTH AND ALSO IF (STR+STR) CONTAINS GOAL IT MEANS IT IS ROTATED.
+HENCE WE WILL RETURN TRUE.
+
+CODE:
+ boolean rot(String st,String str)
+    {
+        String s=str+str;
+        if(goal.length()==str.length()&&s.contains(goal))
+            return true;
+        return false;
+    }
