@@ -1,0 +1,33 @@
+EXPLANATION:
+
+
+AS WE KNOW WE CAN NOT ACCESS ELEMENT FROM LAST OF LINKED LIST
+SO IN THIS PROGRAM WE WILL FIND THE ELEMENT FROM BEGINNING 
+BY FINDING THE LENGTH OF LIST AND SUBSTRACT INDEX OF ELEMENT FROM LENGTH.
+AND FINALLY WILL GET THE ELEMENT.
+
+SOLUTION:
+
+class Solution
+{
+    //Function to find the data of nth node from the end of a linked list.
+    int getNthFromLast(Node head, int n)
+    {
+        Node temp=head;
+        int c=0;
+        while(temp!=null)
+        {
+            c++;
+            temp=temp.next;
+        }
+        if (c<n)
+            return -1;
+        int index=c-n+1;
+        Node curr=head;
+       for(int i=1;i<index;i++)
+       {
+           curr=curr.next;
+       }
+        return curr.data;
+    }
+}
