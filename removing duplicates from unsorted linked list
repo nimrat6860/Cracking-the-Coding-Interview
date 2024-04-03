@@ -1,0 +1,27 @@
+EXPLANATION:
+HERE I AM USING HASHSET TO STORE THE ELEMENTS OF THE LINKED LIST.
+BY TRANSVERING THROUGH LINKED LIST I AM CHECKING IF THE ELEMENT IS ALREADY PRESENT IN THE SET ,THE ELEMENT WILL BE REMOVED BY POINTING PREVIOUS ELEMENT'S ADDRESS TO NEXT ELEMENT.
+AND IF ELEMENT IS NOT PRESENT WE WILL SIMPLY ADD THE ELEMENT AND UPDATE THE CUREENT NODE.
+
+CODE:
+
+HashSet<Integer> hs = new HashSet<>(); 
+      
+        Node current = head; 
+        Node prev = null; 
+        
+        while (current != null)  
+        { 
+            int curval = current.data; 
+              
+            if (hs.contains(curval)) { 
+                prev.next = current.next;
+                current=null;
+            }
+            else { 
+                hs.add(curval); 
+                prev = current; 
+            }
+            current = prev.next; 
+        } 
+        return head;
