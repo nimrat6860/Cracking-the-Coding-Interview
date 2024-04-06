@@ -1,0 +1,31 @@
+CODE:
+
+class Solution
+{
+       public boolean isPalindrome(Node head) 
+       {
+        if(head == null || head.next==null )
+        return true;
+        Node slow=head;
+        Node fast=head;
+        Node prev=null;
+        while(fast !=null &&  fast.next!=null)  
+        {
+            fast=fast.next.next;
+            Node temp = slow.next;
+            slow.next = prev;
+            prev=slow;
+            slow=temp;
+        }
+        if(fast!=null)
+            slow=slow.next;
+        while(prev!=null && slow!=null)
+        {
+            if(prev.data != slow.data)
+            return false;
+            prev=prev.next;
+            slow=slow.next;
+        }
+        return true;
+}
+}
