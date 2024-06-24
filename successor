@@ -1,0 +1,38 @@
+function findInOrderSuccessor(node) {
+    // Check if the node is null
+    // If it is, then it doesn't have an in-order successor, return null
+    if (!node) return null;
+
+    // If the node has a right child, then the in-order successor
+    // is the leftmost node in the node’s right subtree.
+    if (node.right !== null) {
+        // Move to the right child
+        node = node.right;
+        
+        // Find the leftmost child in this right subtree.
+        // Keep going left until the left child is null.
+        while (node.left !== null) node = node.left;
+        
+        // Return the leftmost child which is the in-order successor
+        return node;
+    }
+
+    // If the node does not have a right child, then the in-order successor
+    // is above it in the tree. So, we climb up the tree using the parent link
+    // until we reach a node that is the left child of its parent.
+    // This parent node is the in-order successor.
+    let parent = node.parent;
+    
+    // Continue moving up until you reach a node that is a left child of its parent
+    // Or until you reach the root of the tree (parent is null)
+    while (parent !== null && node === parent.right) {
+        // Move one level up
+        node = parent;
+        // Update the parent to the parent of the current node
+        parent = parent.parent;
+    }
+    
+    // Return the found parent as in-order successor
+    // Or null if no in-order successor is found
+    return parent;
+}
