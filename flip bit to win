@@ -1,0 +1,27 @@
+int longestSequenceOf1s(int input) {
+        char[] chars = Integer.toBinaryString(input).toCharArray();
+        int maxSeq = 1;
+        int count = 1;
+        boolean flipUsed = false;
+        int flipUsedIndex = -1;
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == '1') {
+                count++;
+                maxSeq = Math.max(count, maxSeq);
+            } else {
+                if ((i + 1 < chars.length && chars[i + 1] == '1') && count > 0 && !flipUsed) {
+                    flipUsed = true;
+                    flipUsedIndex = i;
+                } else {
+                    if (flipUsedIndex >= 0 && flipUsed) {
+                        i = flipUsedIndex;
+                    }
+                    count = 1;
+                    flipUsed = false;
+                }
+
+            }
+
+        }
+        return maxSeq;
+    }
