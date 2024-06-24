@@ -1,0 +1,21 @@
+ArrayList al = new ArrayList();
+		while(!q.isEmpty()){
+			levelNodes = q.size();
+			ListNode head = null;
+			ListNode curr = null;
+			while(levelNodes>0){
+				Node n = (Node)q.remove();
+				ListNode ln = new ListNode(n.data);
+				if(head==null){
+					head = ln;
+					curr = ln;
+				}else{
+					curr.next = ln;
+					curr = curr.next;
+				}
+				if(n.left!=null) q.add(n.left);
+				if(n.right!=null) q.add(n.right);
+				levelNodes--;
+			}
+			al.add(head);
+		}
