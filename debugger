@@ -1,0 +1,1 @@
+n & (n-1) helps in identifying the value of the last bit. Since the least significant bit for n and n-1 are either (0 and 1) or (1 and 0) . Refer above table. (n & (n-1)) == 0 only checks if n is a power of 2 or 0.
